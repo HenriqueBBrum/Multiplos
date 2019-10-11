@@ -20,7 +20,7 @@ class Vertice{
         inline unsigned int get_id(){ return id; }
 
         inline void set_id(unsigned int id){
-            ///Restrições?
+            ///RestriÃ§Ãµes?
             this->id = id;
         }
 
@@ -63,7 +63,7 @@ class Graph{
         void add_vertice(unsigned int id){
             for(auto i : vertices){
                 if(i->get_id() == id){
-                    std::cout<<"Esse elemento já existe"<<std::endl;
+                    std::cout<<"Esse elemento jÃ¡ existe"<<std::endl;
                     return;
                 }
             }
@@ -150,58 +150,95 @@ class Graph{
         void create_edges(){
             add_edge(0,1);
             add_edge(0,2);
+
             add_edge(1,2);
+
             add_edge(2,0);
             add_edge(2,3);
+            add_edge(2,4);
+
             add_edge(3,3);
+
+            add_edge(4,2);
+
+            add_edge(5,6);
+            add_edge(5,7);
+
+            add_edge(7,5);
+            add_edge(7,8);
+
+            add_edge(8,6);
         }
 
-        void bfs(unsigned int id){
+        std::list<Vertice*> bfs(unsigned int id){
+            std::list<Vertice*> result;
             Vertice* v = find_vertice(id);
 
-            std::vector<bool> visited(amount,0);
+            std::list<Vertice*> visited;
 
             std::queue<Vertice*> bfs_queue;
 
-            visited[id] = true;
+            visited.push_back(v);
             bfs_queue.push(v);
 
 
             while(!bfs_queue.empty())
             {
                 Vertice* aux = bfs_queue.front();
-                std::cout << aux->get_id() << " ";
+                result.push_back(aux);
                 bfs_queue.pop();
 
-                for (auto i : v->get_adj_vertices())
+                for (auto i : aux->get_adj_vertices())
                 {
-                    if (!visited[i->get_id()])
+                    if (std::find(visited.begin(),visited.end(),i)==visited.end())
                     {
-                        visited[i->get_id()] = true;
+                        visited.push_back(i);
                         bfs_queue.push(i);
                     }
                 }
             }
+
+            return result;
         }
+
+
+        std::list<Vertice*> connected(Vertice* v){
+            std::list<Vertice*> connected = bfs(v->get_id());
+            //connected.remove(find_vertice(v->get_id()));
+            for(auto i: connected){
+              std::cout<<i->get_id()<<" ";
+            }
+
+            std::cout<<"\n";
+
+            return connected;
+        }
+
+        void allconnected(){
+            std::list<std::list<Vertice*>> paths;
+            for(auto i: vertices){
+              paths.push_back(connected(i));
+            }
+        }
+
+        
 
 
 };
 
 int main(){
-    int n = 5;
+    int n = 10;
     Graph graph(n);
     for(int i = 0; i<n;i++){
         graph.add_vertice(i);
     }
-    graph.print_vertices();
+
     graph.create_edges();
     for(int i = 0; i<n;i++){
         std::cout<<"Adj do vertice "<<i<<" -> ";
         graph.print_edges(i);
     }
-    std::cout<<"Bfs: \n";
-    graph.bfs(2);
 
-
-
+    //graph.connected(4);
+    graph.allconnected();
 }
