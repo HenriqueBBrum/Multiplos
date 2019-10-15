@@ -36,6 +36,13 @@ class Vertice{
             return adj;
         }
 
+        bool is_adj(Vertice* v){
+            if(std::find(adj.begin(),adj.end(),v)!=adj.end())
+                return true;
+            else
+                return false;
+        }
+
 };
 
 
@@ -98,7 +105,16 @@ class Graph{
                 return;
             }
 
-            v1->add_adj_vertice(v2);
+            if(v1->is_adj(v2)){
+                return;
+            }
+
+            if(v1==v2){
+                v1->add_adj_vertice(v2);
+            }else{
+                v1->add_adj_vertice(v2);
+                v2->add_adj_vertice(v1);
+            }
         }
 
         void remove_edges(Vertice* v){
@@ -203,25 +219,34 @@ class Graph{
 
 
         std::list<Vertice*> connected(Vertice* v){
-            std::list<Vertice*> connected = bfs(v->get_id());
-            //connected.remove(find_vertice(v->get_id()));
-            for(auto i: connected){
-              std::cout<<i->get_id()<<" ";
+            if(v==nullptr){
+              return {};
             }
-
-            std::cout<<"\n";
-
+            std::list<Vertice*> connected = bfs(v->get_id());
             return connected;
         }
 
         void allconnected(){
-            std::list<std::list<Vertice*>> paths;
-            for(auto i: vertices){
+            std::list<std::list<Vertice*>> paths = {};
+            std::list<Vertice*> aux = vertices;
+            std::list<Vertice*> seen = {};
+            while(!aux.empty()){
+              Vertice* i = aux.front();
+              seen = connected(i);
+              std::cout<<"{ ";
+              for(auto j: seen){
+                std::cout<<j->get_id()<<", ";
+                if(std::find(aux.begin(),aux.end(),j)!=aux.end()){
+                    aux.remove(j);
+                }
+              }
+              std::cout<<" }\n";
               paths.push_back(connected(i));
             }
+
         }
 
-        
+
 
 
 };
@@ -234,11 +259,6 @@ int main(){
     }
 
     graph.create_edges();
-    for(int i = 0; i<n;i++){
-        std::cout<<"Adj do vertice "<<i<<" -> ";
-        graph.print_edges(i);
-    }
 
-    //graph.connected(4);
     graph.allconnected();
 }
