@@ -4,8 +4,6 @@
 #include<queue>
 #include<map>
 
-
-
 class Vertice{
     private:
         std::list<Vertice*> adj;
@@ -21,7 +19,7 @@ class Vertice{
         inline unsigned int get_id(){ return id; }
 
         inline void set_id(unsigned int id){
-            ///Restrições?
+            ///Restriï¿½ï¿½es?
             this->id = id;
         }
 
@@ -59,47 +57,37 @@ class Graph{
             }
 
             Vertice* v = graph.front();
-            std::list<Vertice*> visited;
 
             std::queue<Vertice*> bfs_queue;
 
-            visited.push_back(v);
             bfs_queue.push(v);
 
             auto it = colors.find(v);
             if(it!=colors.end())
                 it->second = 0;
 
-
             while(!bfs_queue.empty()){
                 Vertice* aux = bfs_queue.front();
+                it = colors.find(aux);
                 bfs_queue.pop();
-
                 for (auto i : aux->get_adj_vertices()){
-                    if (std::find(visited.begin(),visited.end(),i)==visited.end()){
-
-                        it = colors.find(i);
-                        if(it!=colors.end()){
-                            if(it->second == -1){
-                                it->second = 1 - color_paint;
-                            }else if(it->second==color_paint){
-                                std::cout<<"Não é bipartido\n";
-                                return false;
-                            }
-
+                    if(i==aux){
+                      std::cout<<"\nNao eh bipartido\n";
+                      return false;
+                    }
+                    auto it_aux = colors.find(i);
+                    if(it_aux!=colors.end()){
+                        if(it_aux->second == -1 ){
+                            it_aux->second = 1 - it->second;
+                            bfs_queue.push(i);
+                        }else if(it_aux->second==it->second){
+                            std::cout<<"\nNao eh bipartido\n";
+                            return false;
                         }
-
-
-                        visited.push_back(i);
-                        bfs_queue.push(i);
                     }
                 }
 
-                color_paint = 1 - color_paint;
-
-
             }
-
             return true;
 
         }
@@ -124,7 +112,7 @@ class Graph{
         void add_vertice(unsigned int id){
             for(auto i : vertices){
                 if(i->get_id() == id){
-                    std::cout<<"Esse elemento já existe"<<std::endl;
+                    std::cout<<"Esse elemento jï¿½ existe"<<std::endl;
                     return;
                 }
             }
@@ -229,7 +217,7 @@ class Graph{
             add_edge(2,3);
             add_edge(2,4);
 
-            add_edge(3,3);
+            //add_edge(3,3);
 
             add_edge(4,2);
 
@@ -323,8 +311,11 @@ int main(){
 
     graph.create_edges();
 
-    graph.print_edges();
+    //graph.print_edges();
 
-    std::cout<<"É bipartido "<<graph.is_bipartite();
+    std::cout<<"\nBipartido "<<graph.is_bipartite()<<std::endl;
+
 
 }
+
+    
