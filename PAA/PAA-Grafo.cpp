@@ -260,7 +260,7 @@ class Graph{
 
             return result;
         }
-
+        //eficiencia = O(V^E)
         std::list<Vertice*> connected(Vertice* v){
             if(v==nullptr){
               return {};
@@ -268,7 +268,8 @@ class Graph{
             std::list<Vertice*> connected = bfs(v->get_id());
             return connected;
         }
-
+        //eficiencia = O(G^(V^E+E))
+        //G é a quantidade de caminhos
         std::list<std::list<Vertice*>> allconnected(){
             std::list<std::list<Vertice*>> paths = {};
             std::list<Vertice*> aux = vertices;
@@ -287,7 +288,8 @@ class Graph{
             return paths;
 
         }
-
+        //eficiecia = O(G^(V+V^E))
+        //G é a quantidade de caminhos
         bool is_bipartite(){
             std::list<std::list<Vertice*>> graphs = allconnected();
 
