@@ -2,6 +2,7 @@
 #include<list>
 #include<algorithm>
 #include<queue>
+#include<map>
 
 
 
@@ -20,7 +21,7 @@ class Vertice{
         inline unsigned int get_id(){ return id; }
 
         inline void set_id(unsigned int id){
-            ///RestriÃ§Ãµes?
+            ///Restrições?
             this->id = id;
         }
 
@@ -50,6 +51,59 @@ class Graph{
     private:
         std::list<Vertice*> vertices;
         unsigned int amount = 0;
+
+        bool is_bipartite_(std::list<Vertice*> graph){
+            std::map<Vertice*,int> colors;
+            for(auto i:  graph){
+                colors[i] = -1;
+            }
+
+            Vertice* v = graph.front();
+            std::list<Vertice*> visited;
+
+            std::queue<Vertice*> bfs_queue;
+
+            visited.push_back(v);
+            bfs_queue.push(v);
+
+            auto it = colors.find(v);
+            if(it!=colors.end())
+                it->second = 0;
+
+
+            while(!bfs_queue.empty()){
+                Vertice* aux = bfs_queue.front();
+                bfs_queue.pop();
+
+                for (auto i : aux->get_adj_vertices()){
+                    if (std::find(visited.begin(),visited.end(),i)==visited.end()){
+
+                        it = colors.find(i);
+                        if(it!=colors.end()){
+                            if(it->second == -1){
+                                it->second = 1 - color_paint;
+                            }else if(it->second==color_paint){
+                                std::cout<<"Não é bipartido\n";
+                                return false;
+                            }
+
+                        }
+
+
+                        visited.push_back(i);
+                        bfs_queue.push(i);
+                    }
+                }
+
+                color_paint = 1 - color_paint;
+
+
+            }
+
+            return true;
+
+        }
+
     public:
 
         Graph(unsigned int amt ){ amount = amt;}
@@ -70,7 +124,7 @@ class Graph{
         void add_vertice(unsigned int id){
             for(auto i : vertices){
                 if(i->get_id() == id){
-                    std::cout<<"Esse elemento jÃ¡ existe"<<std::endl;
+                    std::cout<<"Esse elemento já existe"<<std::endl;
                     return;
                 }
             }
@@ -150,24 +204,26 @@ class Graph{
             }
         }
 
-        void print_edges(unsigned int id){
-            Vertice* v = find_vertice(id);
-            if(v == nullptr){
-                std::cout<<"Nao foi possivel achar os vertices requesitados"<<std::endl;
-                return;
+        void print_edges(){
+            for(auto v: vertices){
+                if(v == nullptr){
+                    std::cout<<"Nao foi possivel achar os vertices requesitados"<<std::endl;
+                    return;
+                }
+                std::cout<<v->get_id()<<" - > ";
+                for(auto j: v->get_adj_vertices()){
+                    std::cout<<j->get_id()<<" - > ";
+                }
+                std::cout<<"\n";
             }
 
-            for(auto i: v->get_adj_vertices()){
-                std::cout<<i->get_id()<<", ";
-            }
-            std::cout<<"\n";
         }
 
         void create_edges(){
             add_edge(0,1);
             add_edge(0,2);
 
-            add_edge(1,2);
+            //add_edge(1,2);
 
             add_edge(2,0);
             add_edge(2,3);
@@ -217,7 +273,6 @@ class Graph{
             return result;
         }
 
-
         std::list<Vertice*> connected(Vertice* v){
             if(v==nullptr){
               return {};
@@ -226,28 +281,36 @@ class Graph{
             return connected;
         }
 
-        void allconnected(){
+        std::list<std::list<Vertice*>> allconnected(){
             std::list<std::list<Vertice*>> paths = {};
             std::list<Vertice*> aux = vertices;
             std::list<Vertice*> seen = {};
             while(!aux.empty()){
               Vertice* i = aux.front();
               seen = connected(i);
-              std::cout<<"{ ";
               for(auto j: seen){
-                std::cout<<j->get_id()<<", ";
                 if(std::find(aux.begin(),aux.end(),j)!=aux.end()){
                     aux.remove(j);
                 }
               }
-              std::cout<<" }\n";
               paths.push_back(connected(i));
             }
 
+            return paths;
+
         }
 
+        bool is_bipartite(){
+            std::list<std::list<Vertice*>> graphs = allconnected();
 
+            for(auto i: graphs){
+                if(!is_bipartite_(i))
+                    return false;
 
+            }
+
+            return true;
+        }
 
 };
 
@@ -260,5 +323,8 @@ int main(){
 
     graph.create_edges();
 
-    graph.allconnected();
+    graph.print_edges();
+
+    std::cout<<"É bipartido "<<graph.is_bipartite();
+
 }
