@@ -1,12 +1,5 @@
 function formaDeNewton(x,y,x_til)
   
-  %i = 0;
-  %loops = 0;
-  %while i<length(x)
-    %loops+=(length(x)-i)
-    %i++;
-  %endwhile
-
   n = length(x);
   D = zeros(n);
   
@@ -20,9 +13,7 @@ function formaDeNewton(x,y,x_til)
   display(D)
   
   y_til = calculaPolinomio(D, x,x_til)
-  
-
-  
+ 
 endfunction
 
 function retorno = f_value(D,X,Y,i,j)
