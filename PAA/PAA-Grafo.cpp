@@ -260,7 +260,33 @@ class Graph{
 
             return result;
         }
-        //eficiencia = O(V^E)
+
+        void dfs_(Vertice* v, std::list<Vertice*> visited){
+            visited.push_back(v);
+            std::cout<<v->get_id()<<" - ";
+            for(auto i: v->get_adj_vertices()){
+              if (std::find(visited.begin(),visited.end(),i)==visited.end()){
+                  dfs_(i,visited);
+              }
+            }
+
+        }
+
+        std::list<Vertice*> dfs(unsigned int id){
+            Vertice* v = find_vertice(id);
+
+            std::list<Vertice*> visited;
+
+            std::cout<<"Dfs do "<<id<<std::endl;
+
+            dfs_(v, visited);
+
+            std::cout<<"\n";
+
+            return visited;
+        }
+
+        //eficiencia = O(V+E)
         std::list<Vertice*> connected(Vertice* v){
             if(v==nullptr){
               return {};
@@ -268,7 +294,7 @@ class Graph{
             std::list<Vertice*> connected = bfs(v->get_id());
             return connected;
         }
-        //eficiencia = O(G^(V^E+E))
+        //eficiencia = O(G*(V+E+E))
         //G é a quantidade de caminhos
         std::list<std::list<Vertice*>> allconnected(){
             std::list<std::list<Vertice*>> paths = {};
@@ -288,7 +314,7 @@ class Graph{
             return paths;
 
         }
-        //eficiecia = O(G^(V+V^E))
+        //eficiecia = O(G*(V+V+E))
         //G é a quantidade de caminhos
         bool is_bipartite(){
             std::list<std::list<Vertice*>> graphs = allconnected();
@@ -302,7 +328,15 @@ class Graph{
             return true;
         }
 
+        void print_list_vertices(std::list<Vertice*> l){
+            for(auto i: l){
+                std::cout<<i->get_id()<<" - ";
+            }
+        }
+
 };
+
+
 
 int main(){
     int n = 10;
@@ -313,11 +347,12 @@ int main(){
 
     graph.create_edges();
 
-    //graph.print_edges();
+    graph.print_edges();
 
-    std::cout<<"\nBipartido "<<graph.is_bipartite()<<std::endl;
+    //std::cout<<"\nBipartido "<<graph.is_bipartite()<<std::endl;
 
+    graph.dfs(3);
 
+    std::cout<<"Bfs do 1\n";
+    graph.print_list_vertices(graph.bfs(3));
 }
-
-    
