@@ -1,3 +1,5 @@
+//Adicionar genericos
+
 #include<iostream>
 #include<list>
 #include<algorithm>
