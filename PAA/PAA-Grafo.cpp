@@ -3,17 +3,21 @@
 #include<algorithm>
 #include<queue>
 #include<map>
+#include<utility>
 
 class Vertice{
     private:
         std::list<Vertice*> adj;
         unsigned int id;
 
+
     public:
+        std::pair<int, int> ponto;
         Vertice(){}
 
-        Vertice(unsigned int id){
+        Vertice(unsigned int id, std::pair<int, int> ponto){
             this->id  = id;
+            this->ponto = ponto;
         }
 
         inline unsigned int get_id(){ return id; }
@@ -109,7 +113,7 @@ class Graph{
             return nullptr;
         }
 
-        void add_vertice(unsigned int id){
+        void add_vertice(unsigned int id, std::pair<int,int> ponto){
             for(auto i : vertices){
                 if(i->get_id() == id){
                     std::cout<<"Esse elemento j� existe"<<std::endl;
@@ -117,7 +121,9 @@ class Graph{
                 }
             }
 
-            Vertice* v =  new Vertice(id);
+
+
+            Vertice* v =  new Vertice(id, ponto);
 
             vertices.push_back(v);
             amount++;
@@ -198,9 +204,9 @@ class Graph{
                     std::cout<<"Nao foi possivel achar os vertices requesitados"<<std::endl;
                     return;
                 }
-                std::cout<<v->get_id()<<" - > ";
+                std::cout<<std::get<0>(v->ponto)<<","<<std::get<1>(v->ponto)<<" - > ";
                 for(auto j: v->get_adj_vertices()){
-                    std::cout<<j->get_id()<<" - > ";
+                    std::cout<<std::get<0>(j->ponto)<<","<<std::get<1>(j->ponto)<<" - > ";
                 }
                 std::cout<<"\n";
             }
@@ -208,26 +214,23 @@ class Graph{
         }
 
         void create_edges(){
-            add_edge(0,1);
-            add_edge(0,2);
+            for(auto v1: vertices){
+              for(auto v2: vertices){
+                  if(v1==v2 || v1->is_adj(v2))
+                    continue;
 
-            //add_edge(1,2);
+                  if((std::get<0>(v1->ponto)==std::get<0>(v2->ponto) &&
+                    ((std::get<1>(v1->ponto)==std::get<1>(v2->ponto)+1) ||
+                    (std::get<1>(v1->ponto)==std::get<1>(v2->ponto)-1))) ||
+                    (std::get<1>(v1->ponto)==std::get<1>(v2->ponto) &&
+                    (std::get<0>(v1->ponto)==std::get<0>(v2->ponto)+1 ||
+                    std::get<0>(v1->ponto)==std::get<0>(v2->ponto)-1))){
 
-            add_edge(2,0);
-            add_edge(2,3);
-            add_edge(2,4);
+                        add_edge(v1->get_id(), v2->get_id());
+                  }
 
-            //add_edge(3,3);
-
-            add_edge(4,2);
-
-            add_edge(5,6);
-            add_edge(5,7);
-
-            add_edge(7,5);
-            add_edge(7,8);
-
-            add_edge(8,6);
+              }
+            }
         }
 
         std::list<Vertice*> bfs(unsigned int id){
@@ -330,7 +333,7 @@ class Graph{
 
         void print_list_vertices(std::list<Vertice*> l){
             for(auto i: l){
-                std::cout<<i->get_id()<<" - ";
+                std::cout<<std::get<0>(i->ponto)<<","<<std::get<1>(i->ponto)<<"  ";
             }
         }
 
@@ -339,20 +342,29 @@ class Graph{
 
 
 int main(){
-    int n = 10;
+    int n = 5;
+    int aux = 0;
     Graph graph(n);
     for(int i = 0; i<n;i++){
-        graph.add_vertice(i);
+        for(int j = 0;j<5;j++){
+            graph.add_vertice(aux, std::make_pair(i,j));
+            aux++;
+        }
     }
 
     graph.create_edges();
 
-    graph.print_edges();
+    Graph h(n*n);
+
+
+
+    //graph.print_edges();/*
 
     //std::cout<<"\nBipartido "<<graph.is_bipartite()<<std::endl;
 
-    graph.dfs(3);
+    //graph.dfs(3);
 
     std::cout<<"Bfs do 1\n";
     graph.print_list_vertices(graph.bfs(3));
+    std::cout<<std::endl;
 }
