@@ -1,11 +1,13 @@
 function interp_15(x,y)
+  graphics_toolkit("gnuplot")
   n = length(x);
   P = 0.0;
   for i = 1:n
     P+=y(i)*L(i,n,x);
   endfor
   
-  plot(x,y,'or', x,polyval(P,x));
+  z = [0:0.01:x(n)];
+  plot(x,y,'or',z,polyval(P,z));
 
 endfunction
 
