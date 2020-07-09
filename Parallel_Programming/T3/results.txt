@@ -1,0 +1,88 @@
+
+Test  A , SCHED = RUNTIME, chunk 0 : using mutex (expecting correct results)
+BCABCBCACBACBCABCACACACBCBCABCACACBCBABABCACABACBCBCBCBCACBA
+A=17 B=19 C=24 
+
+Test B , SCHED = RUNTIME, chunk 0 : no mutex (expecting wrong results)
+BBCABACBCACBACBACBACBACBACBACBACBACBACBACBACBACBACBACBACBA--
+A=19 B=20 C=19 
+ 
+ ------------------------------------------------------------------------------------------------ 
+
+
+Test  A , SCHED = STATIC, chunk 0 : using mutex (expecting correct results)
+CACBACBABCBCABCABCBCBACBCBCACABCBACBACBCACBABCACACBABABABAAA
+A=20 B=20 C=20 
+
+Test B , SCHED = STATIC, chunk 0 : no mutex (expecting wrong results)
+AABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABCABC--
+A=20 B=19 C=19 
+ 
+ ------------------------------------------------------------------------------------------------ 
+
+
+Test  A , SCHED = STATIC, chunk 15 : using mutex (expecting correct results)
+CBCABCACABABACABCBCBACACACBABACABABACACACBABCBABAAAAAAAAAAAA
+A=30 B=15 C=15 
+
+Test B , SCHED = STATIC, chunk 15 : no mutex (expecting wrong results)
+CBACBACBACABCABABACBABCBACBACBACBACBACBA-CACACA-AAAAAAAAAAAA
+A=29 B=14 C=15 
+ 
+ ------------------------------------------------------------------------------------------------ 
+
+
+Test  A , SCHED = DYNAMIC, chunk 0 : using mutex (expecting correct results)
+ABCBCABCABABCABACACBCABACBCBCACBCBCABACABCACBCBABABACABABACB
+A=20 B=21 C=19 
+
+Test B , SCHED = DYNAMIC, chunk 0 : no mutex (expecting wrong results)
+BBABCBCABABCBABCABCABCBCABABACBACBACBCABCABCBACBACBCABCABC--
+A=17 B=23 C=18 
+ 
+ ------------------------------------------------------------------------------------------------ 
+
+
+Test  A , SCHED = DYNAMIC, chunk 15 : using mutex (expecting correct results)
+CACBCACBCBACACACABACBCBCACBABCBABACBCBACABACACBCBCCCCCCCCCCC
+A=15 B=15 C=30 
+
+Test B , SCHED = DYNAMIC, chunk 15 : no mutex (expecting wrong results)
+BCBACBACBABCABCBCACBACBCBACBACBCBACBACBAC-ACACCA-CCCCCCCCCCC
+A=14 B=15 C=29 
+ 
+ ------------------------------------------------------------------------------------------------ 
+
+
+Test  A , SCHED = GUIDED, chunk 0 : using mutex (expecting correct results)
+CACBCBCACACBCABABCABCBCACACBCACACBABCACBBBAABABACBABACACABAC
+A=21 B=18 C=21 
+
+Test B , SCHED = GUIDED, chunk 0 : no mutex (expecting wrong results)
+ACABACBACBACBCBACBACBACBACBACBABCABCABCABCABCABCABCABCABCA--
+A=20 B=19 C=19 
+ 
+ ------------------------------------------------------------------------------------------------ 
+
+
+Test  A , SCHED = GUIDED, chunk 15 : using mutex (expecting correct results)
+CACACACACBABABCBABCABACABCABABCBABCBABCBCACBCACACACACCAAAAAA
+A=25 B=15 C=20 
+
+Test B , SCHED = GUIDED, chunk 15 : no mutex (expecting wrong results)
+ACABACBCBACBACBACBACBACBACBACBACBACBACBACBACB-CBCBCBCBC-CCCC
+A=15 B=19 C=24 
+ 
+ ------------------------------------------------------------------------------------------------ 
+
+
+Test  A , SCHED = AUTO, chunk 0 : using mutex (expecting correct results)
+CBABACACBCACACACBCBCBABACBABCBACBABCABCABCAAABAAAAAAAAAAAAAA
+A=30 B=15 C=15 
+
+Test B , SCHED = AUTO, chunk 0 : no mutex (expecting wrong results)
+BCBACBABAABACBACBABABACBCABCABCABCABCBC-CACAC-AAAAAAAAAAAAAA
+A=29 B=15 C=14 
+ 
+ ------------------------------------------------------------------------------------------------ 
+

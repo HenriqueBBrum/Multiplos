@@ -1,0 +1,541 @@
+10000.000000
+1 thread(s), wsize = 1000000, repeat = 2000, 4912086 usec
+10000.000000
+1 thread(s), wsize = 1000000, repeat = 2000, 5015141 usec
+10000.000000
+1 thread(s), wsize = 1000000, repeat = 2000, 5117873 usec
+10000.000000
+1 thread(s), wsize = 1000000, repeat = 2000, 5503176 usec
+10000.000000
+1 thread(s), wsize = 1000000, repeat = 2000, 5590220 usec
+Final time result 1 thread(s), wsize = 1000000, repeat = 2000, 5227699 usec
+
+###################################
+10000.000000
+2 thread(s), wsize = 500000, repeat = 2000, 4611003 usec
+10000.000000
+2 thread(s), wsize = 500000, repeat = 2000, 4509863 usec
+10000.000000
+2 thread(s), wsize = 500000, repeat = 2000, 3454302 usec
+10000.000000
+2 thread(s), wsize = 500000, repeat = 2000, 3315801 usec
+10000.000000
+2 thread(s), wsize = 500000, repeat = 2000, 3270120 usec
+Final time result 2 thread(s), wsize = 500000, repeat = 2000, 3832217 usec
+
+###################################
+10000.000000
+4 thread(s), wsize = 250000, repeat = 2000, 2068613 usec
+10000.000000
+4 thread(s), wsize = 250000, repeat = 2000, 2156945 usec
+10000.000000
+4 thread(s), wsize = 250000, repeat = 2000, 2308322 usec
+10000.000000
+4 thread(s), wsize = 250000, repeat = 2000, 2307969 usec
+10000.000000
+4 thread(s), wsize = 250000, repeat = 2000, 2903532 usec
+Final time result 4 thread(s), wsize = 250000, repeat = 2000, 2349076 usec
+
+###################################
+10000.000000
+8 thread(s), wsize = 125000, repeat = 2000, 2308516 usec
+10000.000000
+8 thread(s), wsize = 125000, repeat = 2000, 2592813 usec
+10000.000000
+8 thread(s), wsize = 125000, repeat = 2000, 2283944 usec
+10000.000000
+8 thread(s), wsize = 125000, repeat = 2000, 2556110 usec
+10000.000000
+8 thread(s), wsize = 125000, repeat = 2000, 2305057 usec
+Final time result 8 thread(s), wsize = 125000, repeat = 2000, 2409288 usec
+
+###################################
+10000.000000
+16 thread(s), wsize = 62500, repeat = 2000, 2101893 usec
+10000.000000
+16 thread(s), wsize = 62500, repeat = 2000, 2036627 usec
+10000.000000
+16 thread(s), wsize = 62500, repeat = 2000, 2122822 usec
+10000.000000
+16 thread(s), wsize = 62500, repeat = 2000, 2033085 usec
+10000.000000
+16 thread(s), wsize = 62500, repeat = 2000, 2055351 usec
+Final time result 16 thread(s), wsize = 62500, repeat = 2000, 2069955 usec
+
+###################################
+
+----------------------------------
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 2000, 58597441 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 2000, 57351752 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 2000, 55437292 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 2000, 55632012 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 2000, 56681402 usec
+Final time result 1 thread(s), wsize = 10000000, repeat = 2000, 56739979 usec
+
+###################################
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 2000, 33323005 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 2000, 34614690 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 2000, 35538078 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 2000, 34532889 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 2000, 35323517 usec
+Final time result 2 thread(s), wsize = 5000000, repeat = 2000, 34666435 usec
+
+###################################
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 2000, 25289765 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 2000, 24689145 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 2000, 26683675 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 2000, 28216557 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 2000, 32976359 usec
+Final time result 4 thread(s), wsize = 2500000, repeat = 2000, 27571100 usec
+
+###################################
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 2000, 28636823 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 2000, 24771832 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 2000, 25938838 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 2000, 25976320 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 2000, 25135105 usec
+Final time result 8 thread(s), wsize = 1250000, repeat = 2000, 26091783 usec
+
+###################################
+100000.000001
+16 thread(s), wsize = 625000, repeat = 2000, 24468809 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 2000, 25273757 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 2000, 27288432 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 2000, 27847434 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 2000, 24993847 usec
+Final time result 16 thread(s), wsize = 625000, repeat = 2000, 25974455 usec
+
+###################################
+
+----------------------------------
+----------------------------------
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 1000, 29178343 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 1000, 29270576 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 1000, 30151358 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 1000, 29119479 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 1000, 29973147 usec
+Final time result 1 thread(s), wsize = 10000000, repeat = 1000, 29538580 usec
+
+###################################
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 1000, 18525648 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 1000, 18009449 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 1000, 18085723 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 1000, 17152610 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 1000, 17619129 usec
+Final time result 2 thread(s), wsize = 5000000, repeat = 1000, 17878511 usec
+
+###################################
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 1000, 11217369 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 1000, 11531454 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 1000, 11536176 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 1000, 13414378 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 1000, 12353577 usec
+Final time result 4 thread(s), wsize = 2500000, repeat = 1000, 12010590 usec
+
+###################################
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 1000, 11771292 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 1000, 10962885 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 1000, 11971216 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 1000, 11867971 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 1000, 12073849 usec
+Final time result 8 thread(s), wsize = 1250000, repeat = 1000, 11729442 usec
+
+###################################
+100000.000001
+16 thread(s), wsize = 625000, repeat = 1000, 12020117 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 1000, 11108600 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 1000, 12290076 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 1000, 12747152 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 1000, 12292789 usec
+Final time result 16 thread(s), wsize = 625000, repeat = 1000, 12091746 usec
+
+###################################
+----------------------------------
+1000000.000779
+1 thread(s), wsize = 100000000, repeat = 100, 29200650 usec
+1000000.000779
+1 thread(s), wsize = 100000000, repeat = 100, 29611362 usec
+1000000.000779
+1 thread(s), wsize = 100000000, repeat = 100, 31440406 usec
+1000000.000779
+1 thread(s), wsize = 100000000, repeat = 100, 29224117 usec
+1000000.000779
+1 thread(s), wsize = 100000000, repeat = 100, 29424641 usec
+Final time result 1 thread(s), wsize = 100000000, repeat = 100, 29780235 usec
+
+###################################
+1000000.000627
+2 thread(s), wsize = 50000000, repeat = 100, 16985536 usec
+1000000.000627
+2 thread(s), wsize = 50000000, repeat = 100, 16650492 usec
+1000000.000627
+2 thread(s), wsize = 50000000, repeat = 100, 18032066 usec
+1000000.000627
+2 thread(s), wsize = 50000000, repeat = 100, 18978051 usec
+1000000.000627
+2 thread(s), wsize = 50000000, repeat = 100, 16186649 usec
+Final time result 2 thread(s), wsize = 50000000, repeat = 100, 17366558 usec
+
+###################################
+1000000.000323
+4 thread(s), wsize = 25000000, repeat = 100, 12144145 usec
+1000000.000323
+4 thread(s), wsize = 25000000, repeat = 100, 12599321 usec
+1000000.000323
+4 thread(s), wsize = 25000000, repeat = 100, 14133098 usec
+1000000.000323
+4 thread(s), wsize = 25000000, repeat = 100, 12262937 usec
+1000000.000323
+4 thread(s), wsize = 25000000, repeat = 100, 13513192 usec
+Final time result 4 thread(s), wsize = 25000000, repeat = 100, 12930538 usec
+
+###################################
+999999.999786
+8 thread(s), wsize = 12500000, repeat = 100, 12302094 usec
+999999.999786
+8 thread(s), wsize = 12500000, repeat = 100, 11641748 usec
+999999.999786
+8 thread(s), wsize = 12500000, repeat = 100, 12058268 usec
+999999.999786
+8 thread(s), wsize = 12500000, repeat = 100, 12529674 usec
+999999.999786
+8 thread(s), wsize = 12500000, repeat = 100, 12115077 usec
+Final time result 8 thread(s), wsize = 12500000, repeat = 100, 12129372 usec
+
+###################################
+1000000.000060
+16 thread(s), wsize = 6250000, repeat = 100, 12244498 usec
+1000000.000060
+16 thread(s), wsize = 6250000, repeat = 100, 12148465 usec
+1000000.000060
+16 thread(s), wsize = 6250000, repeat = 100, 12738102 usec
+1000000.000060
+16 thread(s), wsize = 6250000, repeat = 100, 11801169 usec
+1000000.000060
+16 thread(s), wsize = 6250000, repeat = 100, 10846628 usec
+Final time result 16 thread(s), wsize = 6250000, repeat = 100, 11955772 usec
+
+###################################
+
+----------------------------------
+
+
+OPENMP
+
+
+10000.000000
+1 thread(s), wsize = 1000000, repeat = 2000, 6073905 usec
+10000.000000
+1 thread(s), wsize = 1000000, repeat = 2000, 5969114 usec
+10000.000000
+1 thread(s), wsize = 1000000, repeat = 2000, 5849646 usec
+10000.000000
+1 thread(s), wsize = 1000000, repeat = 2000, 6619903 usec
+10000.000000
+1 thread(s), wsize = 1000000, repeat = 2000, 6985131 usec
+Final time result 1 thread(s), wsize = 1000000, repeat = 2000, 6299539 usec
+
+###################################
+10000.000000
+2 thread(s), wsize = 500000, repeat = 2000, 3793027 usec
+10000.000000
+2 thread(s), wsize = 500000, repeat = 2000, 3981827 usec
+10000.000000
+2 thread(s), wsize = 500000, repeat = 2000, 3678268 usec
+10000.000000
+2 thread(s), wsize = 500000, repeat = 2000, 3690070 usec
+10000.000000
+2 thread(s), wsize = 500000, repeat = 2000, 3695678 usec
+Final time result 2 thread(s), wsize = 500000, repeat = 2000, 3767774 usec
+
+###################################
+10000.000000
+4 thread(s), wsize = 250000, repeat = 2000, 2491755 usec
+10000.000000
+4 thread(s), wsize = 250000, repeat = 2000, 2576361 usec
+10000.000000
+4 thread(s), wsize = 250000, repeat = 2000, 2500372 usec
+10000.000000
+4 thread(s), wsize = 250000, repeat = 2000, 2547245 usec
+10000.000000
+4 thread(s), wsize = 250000, repeat = 2000, 2641577 usec
+Final time result 4 thread(s), wsize = 250000, repeat = 2000, 2551462 usec
+
+###################################
+10000.000000
+8 thread(s), wsize = 125000, repeat = 2000, 2476769 usec
+10000.000000
+8 thread(s), wsize = 125000, repeat = 2000, 2481765 usec
+10000.000000
+8 thread(s), wsize = 125000, repeat = 2000, 2462451 usec
+10000.000000
+8 thread(s), wsize = 125000, repeat = 2000, 2485324 usec
+10000.000000
+8 thread(s), wsize = 125000, repeat = 2000, 2469601 usec
+Final time result 8 thread(s), wsize = 125000, repeat = 2000, 2475182 usec
+
+###################################
+10000.000000
+16 thread(s), wsize = 62500, repeat = 2000, 2395409 usec
+10000.000000
+16 thread(s), wsize = 62500, repeat = 2000, 2390133 usec
+10000.000000
+16 thread(s), wsize = 62500, repeat = 2000, 2461191 usec
+10000.000000
+16 thread(s), wsize = 62500, repeat = 2000, 2401669 usec
+10000.000000
+16 thread(s), wsize = 62500, repeat = 2000, 2379579 usec
+Final time result 16 thread(s), wsize = 62500, repeat = 2000, 2405596 usec
+
+###################################
+
+----------------------------------
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 2000, 60454447 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 2000, 60201588 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 2000, 64006728 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 2000, 69843837 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 2000, 60747382 usec
+Final time result 1 thread(s), wsize = 10000000, repeat = 2000, 63050796 usec
+
+###################################
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 2000, 37535208 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 2000, 38386859 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 2000, 37020830 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 2000, 37129254 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 2000, 37199891 usec
+Final time result 2 thread(s), wsize = 5000000, repeat = 2000, 37454408 usec
+
+###################################
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 2000, 25312669 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 2000, 29992462 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 2000, 25084907 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 2000, 25008297 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 2000, 25339682 usec
+Final time result 4 thread(s), wsize = 2500000, repeat = 2000, 26147603 usec
+
+###################################
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 2000, 24752999 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 2000, 25109592 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 2000, 25052528 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 2000, 25068290 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 2000, 25024384 usec
+Final time result 8 thread(s), wsize = 1250000, repeat = 2000, 25001558 usec
+
+###################################
+100000.000001
+16 thread(s), wsize = 625000, repeat = 2000, 24869650 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 2000, 24982591 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 2000, 24944930 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 2000, 24852017 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 2000, 27946752 usec
+Final time result 16 thread(s), wsize = 625000, repeat = 2000, 25519188 usec
+
+###################################
+
+----------------------------------
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 1000, 32968412 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 1000, 31045729 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 1000, 30474181 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 1000, 30324279 usec
+99999.999986
+1 thread(s), wsize = 10000000, repeat = 1000, 30435031 usec
+Final time result 1 thread(s), wsize = 10000000, repeat = 1000, 31049526 usec
+
+###################################
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 1000, 18669399 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 1000, 18549595 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 1000, 18485835 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 1000, 18508797 usec
+100000.000002
+2 thread(s), wsize = 5000000, repeat = 1000, 18685436 usec
+Final time result 2 thread(s), wsize = 5000000, repeat = 1000, 18579812 usec
+
+###################################
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 1000, 13103478 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 1000, 12694950 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 1000, 12872008 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 1000, 12791089 usec
+99999.999996
+4 thread(s), wsize = 2500000, repeat = 1000, 12879588 usec
+Final time result 4 thread(s), wsize = 2500000, repeat = 1000, 12868222 usec
+
+###################################
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 1000, 12591024 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 1000, 12657887 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 1000, 12951604 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 1000, 12647091 usec
+100000.000002
+8 thread(s), wsize = 1250000, repeat = 1000, 12640470 usec
+Final time result 8 thread(s), wsize = 1250000, repeat = 1000, 12697615 usec
+
+###################################
+100000.000001
+16 thread(s), wsize = 625000, repeat = 1000, 12738648 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 1000, 12879437 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 1000, 12628477 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 1000, 12706974 usec
+100000.000001
+16 thread(s), wsize = 625000, repeat = 1000, 12937963 usec
+Final time result 16 thread(s), wsize = 625000, repeat = 1000, 12778299 usec
+
+###################################
+
+----------------------------------
+1000000.000779
+1 thread(s), wsize = 100000000, repeat = 100, 30220735 usec
+1000000.000779
+1 thread(s), wsize = 100000000, repeat = 100, 30495982 usec
+1000000.000779
+1 thread(s), wsize = 100000000, repeat = 100, 33067196 usec
+1000000.000779
+1 thread(s), wsize = 100000000, repeat = 100, 32655819 usec
+1000000.000779
+1 thread(s), wsize = 100000000, repeat = 100, 33763702 usec
+Final time result 1 thread(s), wsize = 100000000, repeat = 100, 32040686 usec
+
+###################################
+1000000.000627
+2 thread(s), wsize = 50000000, repeat = 100, 20178077 usec
+1000000.000627
+2 thread(s), wsize = 50000000, repeat = 100, 20451261 usec
+1000000.000627
+2 thread(s), wsize = 50000000, repeat = 100, 20686944 usec
+1000000.000627
+2 thread(s), wsize = 50000000, repeat = 100, 19846532 usec
+1000000.000627
+2 thread(s), wsize = 50000000, repeat = 100, 18997619 usec
+Final time result 2 thread(s), wsize = 50000000, repeat = 100, 20032086 usec
+
+###################################
+1000000.000323
+4 thread(s), wsize = 25000000, repeat = 100, 12829841 usec
+1000000.000323
+4 thread(s), wsize = 25000000, repeat = 100, 12619850 usec
+1000000.000323
+4 thread(s), wsize = 25000000, repeat = 100, 12658493 usec
+1000000.000323
+4 thread(s), wsize = 25000000, repeat = 100, 12665885 usec
+1000000.000323
+4 thread(s), wsize = 25000000, repeat = 100, 12692525 usec
+Final time result 4 thread(s), wsize = 25000000, repeat = 100, 12693318 usec
+
+###################################
+999999.999786
+8 thread(s), wsize = 12500000, repeat = 100, 12891574 usec
+999999.999786
+8 thread(s), wsize = 12500000, repeat = 100, 12596364 usec
+999999.999786
+8 thread(s), wsize = 12500000, repeat = 100, 12693787 usec
+999999.999786
+8 thread(s), wsize = 12500000, repeat = 100, 12527799 usec
+999999.999786
+8 thread(s), wsize = 12500000, repeat = 100, 12588908 usec
+Final time result 8 thread(s), wsize = 12500000, repeat = 100, 12659686 usec
+
+###################################
+1000000.000060
+16 thread(s), wsize = 6250000, repeat = 100, 12458509 usec
+1000000.000060
+16 thread(s), wsize = 6250000, repeat = 100, 12460871 usec
+1000000.000060
+16 thread(s), wsize = 6250000, repeat = 100, 12771977 usec
+1000000.000060
+16 thread(s), wsize = 6250000, repeat = 100, 12641968 usec
+1000000.000060
+16 thread(s), wsize = 6250000, repeat = 100, 12665463 usec
+Final time result 16 thread(s), wsize = 6250000, repeat = 100, 12599757 usec
+
+###################################
+
+----------------------------------

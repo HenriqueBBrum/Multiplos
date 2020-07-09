@@ -1,0 +1,118 @@
+Parallel 2 
+
+Num threads = 1 Schedule = DYNAMIC Chunk = 100
+Size pop = 150 N trials = 100 N probs = 100
+Elapsed time in milliseconds : 260481 ms
+Elapsed time in seconds : 260 s
+
+----------------------------------------------------------------------------------
+
+
+Parallel 2 
+
+Num threads = 1 Schedule = DYNAMIC Chunk = 100
+Size pop = 150 N trials = 100 N probs = 100
+Elapsed time in milliseconds : 260408 ms
+Elapsed time in seconds : 260 s
+
+----------------------------------------------------------------------------------
+
+
+Parallel 2 
+
+Num threads = 1 Schedule = DYNAMIC Chunk = 100
+Size pop = 150 N trials = 100 N probs = 100
+Elapsed time in milliseconds : 261064 ms
+Elapsed time in seconds : 261 s
+
+----------------------------------------------------------------------------------
+
+
+Parallel 2 
+
+Num threads = 2 Schedule = DYNAMIC Chunk = 50
+Size pop = 150 N trials = 100 N probs = 100
+Elapsed time in milliseconds : 171728 ms
+Elapsed time in seconds : 171 s
+
+----------------------------------------------------------------------------------
+
+
+Parallel 2 
+
+Num threads = 2 Schedule = DYNAMIC Chunk = 50
+Size pop = 150 N trials = 100 N probs = 100
+Elapsed time in milliseconds : 170957 ms
+Elapsed time in seconds : 170 s
+
+----------------------------------------------------------------------------------
+
+
+Parallel 2 
+
+Num threads = 2 Schedule = DYNAMIC Chunk = 50
+Size pop = 150 N trials = 100 N probs = 100
+Elapsed time in milliseconds : 170985 ms
+Elapsed time in seconds : 170 s
+
+----------------------------------------------------------------------------------
+
+
+Parallel 2 
+
+Num threads = 4 Schedule = DYNAMIC Chunk = 25
+Size pop = 150 N trials = 100 N probs = 100
+Elapsed time in milliseconds : 119728 ms
+Elapsed time in seconds : 119 s
+
+----------------------------------------------------------------------------------
+
+
+Parallel 2 
+
+Num threads = 4 Schedule = DYNAMIC Chunk = 25
+Size pop = 150 N trials = 100 N probs = 100
+Elapsed time in milliseconds : 121142 ms
+Elapsed time in seconds : 121 s
+
+----------------------------------------------------------------------------------
+
+
+Parallel 2 
+
+Num threads = 4 Schedule = DYNAMIC Chunk = 25
+Size pop = 150 N trials = 100 N probs = 100
+Elapsed time in milliseconds : 120435 ms
+Elapsed time in seconds : 120 s
+
+----------------------------------------------------------------------------------
+
+
+Parallel 2 
+
+Num threads = 6 Schedule = DYNAMIC Chunk = 16
+Size pop = 150 N trials = 100 N probs = 100
+Elapsed time in milliseconds : 129020 ms
+Elapsed time in seconds : 129 s
+
+----------------------------------------------------------------------------------
+
+
+Parallel 2 
+
+Num threads = 6 Schedule = DYNAMIC Chunk = 16
+Size pop = 150 N trials = 100 N probs = 100
+Elapsed time in milliseconds : 129881 ms
+Elapsed time in seconds : 129 s
+
+----------------------------------------------------------------------------------
+
+
+Parallel 2 
+
+Num threads = 6 Schedule = DYNAMIC Chunk = 16
+Size pop = 150 N trials = 100 N probs = 100
+Elapsed time in milliseconds : 123199 ms
+Elapsed time in seconds : 123 s
+
+----------------------------------------------------------------------------------
