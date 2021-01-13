@@ -9,20 +9,22 @@
 
 typedef unsigned int uint;
 
-// Obs: R =  RIGHT, L = LEFT, N = NULL
+// Obs: R =  RIGHT, L = LEFT, S = STOP
 
 
 struct Tape{
-  std::string tape;
+  std::vector<std::string> tape;
   int head = 0;
 
   friend std::ostream& operator<<(std::ostream& out, const Tape& tp){
-      out<<"Content: "<<tp.tape <<", head pos: "<< tp.head;
+      out<<"Content: ";
+      for(auto i: tp.tape) out<<i<<", ";
+
+      out <<" head pos: "<< tp.head;
       return out;
   }
 
 };
-
 
 
 struct TransitionFormula5Tuple{
@@ -31,12 +33,12 @@ struct TransitionFormula5Tuple{
 };
 
 struct TransitionFormula4Tuple{
-  std::pair<uint, std::string> lhs;
-  std::pair<std::string, uint> rhs;
+  std::pair<uint, std::vector<std::string>> lhs;
+  std::pair<std::vector<std::string>, uint> rhs;
 };
 
 
-class TuringMachine{
+class ReversibleTuringMachine{
 
 private:
   Tape working, history, output;
@@ -47,7 +49,7 @@ private:
   std::vector<std::pair<TransitionFormula4Tuple, TransitionFormula4Tuple>> retraceTxns;
   std::vector<TransitionFormula5Tuple> txns5tuple;
 
-
+  std::vector<uint> units;
   uint pres_state = 0;
   std::vector<uint> computeStates;
   std::vector<uint> copyStates;
@@ -79,60 +81,59 @@ public:
 private:
 
   // Multipurpose funcs
-  int change_head_pos(char movement){
-    int v = -2;
+  int change_head_pos(std::string movement){
+    int v = 0;
 
-    switch (movement) {
-      case 'R': v = 1;
-        break;
-      case 'L': v = -1;
-        break;
-      case 'N': v = 0;
-    }
+    if(movement == "R") v = 1;
+    else if(movement == "L") v = -1;
 
     return v;
   }
 
+  template<typename T>
+  void printVec(std::vector<T> vec){
+    for(auto i: vec) std::cout<<i;
+  }
 
   // Compute part funcs
 
   void quintuple_to_quadruple(){
     TransitionFormula4Tuple tuple_1, tuple_2;
+    uint cont = 1;
+    std::string aux;
+
     for(auto i: txns5tuple){
-      //std::cout<<"5Tuple = "<<i.lhs.first<<", "<<i.lhs.second<<" => "<<std::get<0>(i.rhs)<<", "<<std::get<1>(i.rhs)<<", "<<std::get<2>(i.rhs)<<"\n";
-      std::string aux;
 
       tuple_1.lhs.first = i.lhs.first;
-      tuple_1.lhs.second = (aux = i.lhs.second)+"/B";
-      tuple_1.rhs.first = (aux = std::get<1>(i.rhs))+"RB";
+      tuple_1.lhs.second = {std::string(1, i.lhs.second), "/", "B"};
+      tuple_1.rhs.first = {std::string(1,std::get<1>(i.rhs)), "R", "B"};
       tuple_1.rhs.second = i.lhs.first;
 
-      //std::cout<<"First 4Tuple = "<<tuple_1.lhs.first<<", "<<tuple_1.lhs.second<<" => "<<tuple_1.rhs.first<<", "<<tuple_1.rhs.second<<"\n";
-
       tuple_2.lhs.first = tuple_1.rhs.second;
-      tuple_2.lhs.second = "/B/";
-      tuple_2.rhs.first = std::get<2>(i.rhs)+std::to_string(std::get<0>(i.rhs))+"N";
+      tuple_2.lhs.second = {"/", "B", "/"};
+      tuple_2.rhs.first = {std::string(1,std::get<2>(i.rhs)), std::to_string(cont), "S"};
       tuple_2.rhs.second = std::get<0>(i.rhs);
 
-      //std::cout<<"Second 4Tuple = "<<tuple_2.lhs.first<<", "<<tuple_2.lhs.second<<" => "<<tuple_2.rhs.first<<", "<<tuple_2.rhs.second<<"\n\n";
       computeTxns.push_back(std::make_pair(tuple_1, tuple_2));
+      cont++;
     }
   }
 
   void compute(){
     pres_state = computeStates.at(0);
+    std::string aux;
     while(pres_state!=computeStates.back()){
-      char c = working.tape[working.head];
+      std::string c = working.tape[working.head];
       for(auto i: computeTxns){
-          if(pres_state == i.first.lhs.first && c == i.first.lhs.second[0]){
+          if(pres_state == i.first.lhs.first && c ==  i.first.lhs.second[0]){
 
             // Working tape
             working.tape[working.head] = i.first.rhs.first[0];
             working.head+= change_head_pos(i.second.rhs.first[0]);
 
             // History tape
-            history.tape.insert(history.head , 1,  i.second.rhs.first[1]);
             history.head+= change_head_pos(i.first.rhs.first[1]);
+            history.tape.insert(history.tape.begin()+history.head , i.second.rhs.first[1]);
 
             // Output tape
             output.tape[output.head] = i.first.rhs.first[2];
@@ -161,31 +162,31 @@ private:
       copyStates = {1,2,3};
 
       tuple_1.lhs.first = 1;
-      tuple_1.lhs.second = "xnB";
-      tuple_1.rhs.first = "xnx";
+      tuple_1.lhs.second = {"x", "n", "B"};
+      tuple_1.rhs.first = {"x", "n", "x"};
       tuple_1.rhs.second = 1;
 
       tuple_2.lhs.first = 1;
-      tuple_2.lhs.second = "///";
-      tuple_2.rhs.first = "RNR";
+      tuple_2.lhs.second = {"/", "/", "/"};
+      tuple_2.rhs.first = {"R", "S", "R"};
       tuple_2.rhs.second = 1;
 
       copyTxns.push_back(std::make_pair(tuple_1, tuple_2));
 
       tuple_1.lhs.first = 1;
-      tuple_1.lhs.second = "BnB";
-      tuple_1.rhs.first = "BnB";
+      tuple_1.lhs.second = {"B", "n", "B"};
+      tuple_1.rhs.first = {"B", "n", "B"};
       tuple_1.rhs.second = 2;
 
       tuple_2.lhs.first = 2;
-      tuple_2.lhs.second = "///";
-      tuple_2.rhs.first = "NNN";
+      tuple_2.lhs.second = {"/", "/", "/"};
+      tuple_2.rhs.first = {"S", "S", "S"};
       tuple_2.rhs.second = 3;
 
       copyTxns.push_back(std::make_pair(tuple_1, tuple_2));
   }
 
-  void run_copy_txns(std::pair<TransitionFormula4Tuple, TransitionFormula4Tuple> txns, char c){
+  void run_copy_txns(std::pair<TransitionFormula4Tuple, TransitionFormula4Tuple> txns, std::string c){
     working.tape[working.head] = c;
     working.head+= change_head_pos(txns.second.rhs.first[0]);
 
@@ -209,13 +210,13 @@ private:
     pres_state = copyStates.at(0);
 
     while(pres_state!=copyStates.back()){
-      char c = working.tape[working.head];
+      std::string c = working.tape[working.head];
 
       for(auto i: copyTxns){
-        if(pres_state == i.first.lhs.first && (c == i.first.lhs.second[0] &&  c == 'B') ){
+        if(pres_state == i.first.lhs.first && (c == i.first.lhs.second[0] &&  c == "B") ){
           run_copy_txns(i, c);
           break;
-        }else if(pres_state == i.first.lhs.first && c!='B' && (std::find(tape_alphabet.begin(), tape_alphabet.end(), c) != tape_alphabet.end())){
+        }else if(pres_state == i.first.lhs.first && c!="B" && (std::find(tape_alphabet.begin(), tape_alphabet.end(), c[0]) != tape_alphabet.end())){
           run_copy_txns(i, c);
           break;
         }
@@ -227,73 +228,66 @@ private:
 
   // Retrace funcs
 
+  // Create inverse transitions
   void create_retrace_quarduples(){
     TransitionFormula4Tuple tuple_1, tuple_2;
+    std::string aux;
+
     for(auto it = computeTxns.rbegin(); it!=computeTxns.rend();++it){
-        std::string aux;
         tuple_1.lhs.first = it->second.rhs.second;
-        tuple_1.lhs.second = "/"+(aux = it->second.rhs.first[1])+"/";
+        tuple_1.lhs.second = {"/", it->second.rhs.first[1], "/"};
 
-        aux  = "N";
-        if(it->second.rhs.first[0] == 'R') aux = "L";
-        else if(it->second.rhs.first[0] == 'L') aux = "R";
+        aux  = "S";
+        if(it->second.rhs.first[0] == "R") aux = "L";
+        else if(it->second.rhs.first[0] == "L") aux = "R";
 
-        tuple_1.rhs.first = aux+"BN";
+        tuple_1.rhs.first = {aux, "B", "S"};
         tuple_1.rhs.second = it->second.lhs.first;
 
-        std::cout<<"First 4Tuple = "<<tuple_1.lhs.first<<", "<<tuple_1.lhs.second<<" => "<<tuple_1.rhs.first<<", "<<tuple_1.rhs.second<<"\n";
 
         tuple_2.lhs.first = tuple_1.rhs.second;
-        tuple_2.lhs.second = (aux = it->first.rhs.first[0])+"/B";
-
-        tuple_2.rhs.first = (aux = it->first.lhs.second[0])+"LB";
+        tuple_2.lhs.second = {it->first.rhs.first[0], "/", "B"};
+        tuple_2.rhs.first = {it->first.lhs.second[0], "L", "B"};
         tuple_2.rhs.second = tuple_1.rhs.second;
-
-        std::cout<<"Second 4Tuple = "<<tuple_2.lhs.first<<", "<<tuple_2.lhs.second<<" => "<<tuple_2.rhs.first<<", "<<tuple_2.rhs.second<<"\n\n";
 
         retraceTxns.push_back(std::make_pair(tuple_1, tuple_2));
     }
-
   }
 
+  // While history tape has a valid transition, execute this transition
   void retrace(){
-    pres_state = computeStates.back();
-    while(working.head>=0){
-      char c = working.tape[working.head];
-      std::cout<<"Pres_state = "<<pres_state<<" c = "<<c<<"\n";
-      for(auto i: retraceTxns){
-          if(pres_state == i.first.lhs.first && c == i.second.lhs.second[0]){
 
-            // Working tape
-            std::cout<<"i.second.rhs.first[0]  = "<<i.second.rhs.first[0]<<" i.first.rhs.first[0] = "<<i.first.rhs.first[0]<<"\n";
-            working.tape[working.head] = i.second.rhs.first[0];
-            working.head+= change_head_pos(i.first.rhs.first[0]);
+    while(history.tape[history.head] != "B" ){
+      // Fetch reverse transition
+      auto i = retraceTxns.at(units[3] - std::stoi(history.tape[history.head]));
+      std::string c = working.tape[working.head];
 
-            // History tape
-            history.tape[history.head] = 'B';
-            history.head+= change_head_pos(i.second.rhs.first[1]);
+      // Working tape
+      working.head+= change_head_pos(i.first.rhs.first[0]);
+      working.tape[working.head] = i.second.rhs.first[0];
 
-            // Output tape
-            output.tape[output.head] = output.tape[output.head];
-            output.head+= change_head_pos(i.first.rhs.first[2]);
+      // History tape
+      history.tape[history.head] = "B";
+      history.head+= change_head_pos(i.second.rhs.first[1]);
 
-            // Updates
-            pres_state = i.second.rhs.second;
-            std::vector<uint>::iterator itr = std::find(computeStates.begin(), computeStates.end(), pres_state);
-            if (itr == computeStates.cend()) { std::cout << "Pres_state is not a valid state\n";return;  }
+      // Output tape
+      output.head+= change_head_pos(i.first.rhs.first[2]);
+      output.tape[output.head] = output.tape[output.head];
 
-            break;
-          }
-      }
-      std::cout<<"\nWorking tape => "<<working<<"\n"<<"History tape => "<<history<<"\n"<<"Output tape => "<<output<<"\n\n";
+      // Updates
+      pres_state = i.second.rhs.second;
+      std::vector<uint>::iterator itr = std::find(computeStates.begin(), computeStates.end(), pres_state);
+      if (itr == computeStates.cend()) { std::cout << "Pres_state is not a valid state\n";return;  }
+
     }
-    //std::cout<<"\nWorking tape => "<<working<<"\n"<<"History tape => "<<history<<"\n"<<"Output tape => "<<output<<"\n\n";
+    std::cout<<"\nWorking tape => "<<working<<"\n"<<"History tape => "<<history<<"\n"<<"Output tape => "<<output<<"\n\n";
   }
 
 
   // File reading functions
 
-  void handle_before_transitions(std::ifstream& file, std::vector<uint>& units){
+  // Reads all lines before transitions
+  void handle_before_transitions(std::ifstream& file){
     std::string str;
 
     std::getline(file, str);
@@ -314,7 +308,8 @@ private:
 
   }
 
-  void handle_transitions(std::ifstream& file, std::vector<uint> units){
+  // Reads all transitions
+  void handle_transitions(std::ifstream& file){
     std::string trash_chars(" (),="), str;
     for(uint i = 0;i<units[3];i++){
       std::getline(file, str);
@@ -327,21 +322,22 @@ private:
     }
   }
 
-
   bool read_file(std::string file_name){
-    std::vector<uint> units;
     std::ifstream file(file_name, std::ifstream::in);
     if(file.fail()){
       std::cout<<"Unable to read file with name: "<<file_name<<"\n";
       return false;
     }
 
-    handle_before_transitions(file, units);
-    handle_transitions(file, units);
+    handle_before_transitions(file);
+    handle_transitions(file);
 
-    std::getline(file, working.tape);
-    working.tape+="B";
-    output.tape.assign(working.tape.length(), 'B');
+    std::string aux;
+    std::getline(file, aux);
+    for(auto c: aux) working.tape.push_back(std::string(1,c));
+    working.tape.push_back("B");
+    history.tape.push_back("B");
+    output.tape.assign(working.tape.size(), "B");
 
     return true;
   }
@@ -351,7 +347,7 @@ private:
 
 
 int main(int argc, char** args){
-  TuringMachine tm;
-  tm.run(args[1]);
+  ReversibleTuringMachine rtm;
+  rtm.run(args[1]);
 
 }
